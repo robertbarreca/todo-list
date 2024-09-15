@@ -3,6 +3,7 @@ const express = require("express")
 const {connectToMongoDb} = require("./database")
 
 const app = express()
+app.use(express.json())
 
 const router = require("./routes")
 // use /api to prefix endpoints

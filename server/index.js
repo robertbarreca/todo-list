@@ -2,10 +2,9 @@ const express = require("express")
 
 const app = express()
 
-// create a test router
-app.get("/hello", (req, res) => {
-    res.status(200).json({msg: "hello"})
-})
+const router = require("./routes")
+// use /api to prefix endpoints
+app.use("/api", router)
 
 // create a port var
 const port = 5005

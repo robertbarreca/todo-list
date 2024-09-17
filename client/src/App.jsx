@@ -16,7 +16,7 @@ export default function App() {
     }
   }
   getTodos();
-}, [todos]);
+}, []);
 
   const createNewTodo = async (e) => {
     e.preventDefault()

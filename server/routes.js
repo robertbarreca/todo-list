@@ -33,9 +33,9 @@ router.delete("/todos/:id", async (req, res) => {
     const collection = getCollection()
     const _id = new ObjectId(req.params.id)
     const deletedTodo = await collection.deleteOne({_id})
-    res.status(200).json({deletedTodo})
+    res.status(200).json(deletedTodo)
 })
-// put todos id
+// edit todo status
 router.put("/todos/:id", async (req, res) => {
     const collection = getCollection()
     const _id = new ObjectId(req.params.id)
@@ -46,8 +46,25 @@ router.put("/todos/:id", async (req, res) => {
     }
 
     const updatedTodo = await collection.updateOne({ _id }, { $set: { status: !status } })
-    res.status(200).json({updatedTodo})
+    res.status(200).json(updatedTodo)
 })
+
+// edit todo content
+router.put("/todos/content/:id", async (req, res) => {
+    const collection = getCollection()
+    const _id = new ObjectId(req.params.id)
+    let { todo } = req.body
+
+    if (!todo) {
+        return res.status(400).json({ msg: "Invalid todo content" })
+    }
+    todo = (typeof todo === "string") ? todo : JSON.stringify(todo)
+    
+    const updatedTodo = await collection.updateOne({ _id }, { $set: { todo } })
+
+    res.status(200).json(updatedTodo) 
+})
+
 
 
 module.exports = router 

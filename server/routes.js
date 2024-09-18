@@ -49,22 +49,4 @@ router.put("/todos/:id", async (req, res) => {
     res.status(200).json(updatedTodo)
 })
 
-// edit todo content
-router.put("/todos/content/:id", async (req, res) => {
-    const collection = getCollection()
-    const _id = new ObjectId(req.params.id)
-    let { todo } = req.body
-
-    if (!todo) {
-        return res.status(400).json({ msg: "Invalid todo content" })
-    }
-    todo = (typeof todo === "string") ? todo : JSON.stringify(todo)
-    
-    const updatedTodo = await collection.updateOne({ _id }, { $set: { todo } })
-
-    res.status(200).json(updatedTodo) 
-})
-
-
-
 module.exports = router 

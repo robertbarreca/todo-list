@@ -90,7 +90,7 @@ body {
 
 .form__input {
     flex: 1;
-    /* padding: 0.5rem 0.75rem; */
+    padding: 0.5rem 0.75rem;
     border-radius: 0.25rem;
     border: none;
     outline: none;
@@ -153,12 +153,10 @@ body {
 
     .form {
         width: 90%;
-        align-items: center; 
     }
 
     .form__input {
         padding: 0.5rem;
-        align-items: center; 
     }
 
     .mutations {
@@ -205,12 +203,15 @@ body {
     }
 
     .form__input {
+        padding: 0.5rem;
         width: 97%;
         align-items: center; 
     }
 
     .form__button {
         width: 97%;
+        padding: 1rem;
+        align-items: center; 
     }
 
     .title,
